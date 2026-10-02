@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>工业展厅 3D AR 预览</title>
+    <title>工业展厅 3D AR 动画预览</title>
     
     <!-- 引入谷歌官方的 3D/AR 模型查看组件库 -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
@@ -27,7 +27,7 @@
         h2 { color: #1d1d1f; margin-top: 10px; }
         p { color: #6e6e73; font-size: 14px; }
         
-        /* 让 3D 模型直接 en 网页里显示并可旋转 */
+        /* 让 3D 模型直接在网页里显示并可旋转 */
         model-viewer {
             width: 100%;
             height: 400px;
@@ -35,22 +35,41 @@
             border-radius: 12px;
             margin-top: 15px;
         }
+
+        /* 专业的 AR 唤醒按钮 */
+        #ar-button {
+            background-color: #0071e3;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,113,227,0.3);
+            cursor: pointer;
+            margin-top: 15px;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h2>工业展厅 3D 模型预览</h2>
-        <p>支持网页旋转查看，苹果手机点击按钮可直接进入 AR 现实投影</p>
+        <h2>工业展厅 3D 模型与动画预览</h2>
+        <p>支持网页旋转及动画自动播放，点击下方按钮进入 AR 现实投影</p>
         
-        <!-- 已为你适配新的模型文件名 powermount_stable.usdz -->
+        <!-- 适配了新仓库 Industry-Mixer-Anim-AR、模型 powermount_stable.usdz，并开启了 autoplay 自动播放动画 -->
         <model-viewer 
-            src="https://raw.githubusercontent.com/yp04/Industry-Tank-AR/main/powermount_stable.usdz"
-            ios-src="https://raw.githubusercontent.com/yp04/Industry-Tank-AR/main/powermount_stable.usdz"
+            src="https://raw.githubusercontent.com/yp04/Industry-Mixer-Anim-AR/main/powermount_stable.usdz"
+            ios-src="https://raw.githubusercontent.com/yp04/Industry-Mixer-Anim-AR/main/powermount_stable.usdz"
             ar 
             ar-modes="quick-look webxr scene-viewer" 
             camera-controls 
+            autoplay
             auto-rotate>
+            
+            <button slot="ar-button" id="ar-button">
+                📦 在现实中查看 AR 动画
+            </button>
         </model-viewer>
     </div>
 
